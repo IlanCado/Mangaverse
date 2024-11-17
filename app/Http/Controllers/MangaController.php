@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -61,7 +61,11 @@ class MangaController extends Controller
      */
     public function show(Manga $manga)
     {
-        return view('mangas.show', compact('manga'));
+        $manga->load(['comments.user', 'ratings']); // Charger les relations
+        return view('mangas.show', [
+            'manga' => $manga,
+            'averageRating' => $manga->ratings->avg('rating_value') ?? 'Non noté',
+        ]);
     }
 
     /**

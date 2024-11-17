@@ -13,6 +13,7 @@
             <a href="{{ route('contacts.create') }}">Contact</a> <!-- Ajout du lien vers la page de contact -->
             @auth
                 <a href="{{ route('mangas.create') }}">Ajouter un manga</a>
+                <a href="{{ route('profile.edit') }}">Mon Profil</a>
                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                     @csrf
                     <button type="submit">Se déconnecter</button>
